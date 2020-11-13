@@ -16,7 +16,18 @@ namespace WebAppMVC_Assignment1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddMvc(); //this is mandatory to add here for MVC projects 
+            services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,6 +41,7 @@ namespace WebAppMVC_Assignment1
             app.UseDefaultFiles();   //this used so that webserver can recognize index.html file by its default name
             app.UseStaticFiles();   //this is used so that webserver can recognize static files like html, img files, css file javascript files
             app.UseRouting();      //this is used to enable routing of user requests in the web application
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
@@ -40,22 +52,21 @@ namespace WebAppMVC_Assignment1
 
                 // endpoints.MapDefaultControllerRoute();
 
-                // this is the custom route 
-                /*endpoints.MapControllerRoute(
-                      name: "myroute",
-                      pattern: "Shreya/{id?}",
-                      defaults: new { controller = "App", action = "About"});*/
-
-                /* endpoints.MapControllerRoute(
-                     name: "fever check",
-                     pattern: "App/FeverCheck/{id?}");*/
-
+               
                 // this is the custom route - Assignment 2
                 endpoints.MapControllerRoute(
                      name: "FeverCheck",
                      pattern: "FeverCheck",
                      defaults: new { controller = "Temp", action = "FeverCheck" });
-                
+
+
+                // this is the custom route - Assignment 3
+                endpoints.MapControllerRoute(
+                     name: "Game",
+                     pattern: "GuessingGame",
+                     defaults: new { controller = "Game", action = "RandomNumber" });
+
+
                 endpoints.MapControllerRoute(
                     name: "about",
                     pattern: "App/About/{id?}",

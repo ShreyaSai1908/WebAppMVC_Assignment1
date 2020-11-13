@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebAppMVC_Assignment1.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace WebAppMVC_Assignment1.Controllers
 {
@@ -12,12 +13,14 @@ namespace WebAppMVC_Assignment1.Controllers
         [HttpGet]
         public IActionResult FeverCheck()
         {
+            HttpContext.Session.SetString("View", "Temp/FeverCheck");
             return View();
         }
 
         [HttpPost]
         public IActionResult FeverCheck(double BodyTemp)
         {
+            HttpContext.Session.SetString("View", "Temp/FeverCheck");
             String recommendation=Doctor.giveRecomendation(BodyTemp);
 
             ViewBag.Recommendation = recommendation;
