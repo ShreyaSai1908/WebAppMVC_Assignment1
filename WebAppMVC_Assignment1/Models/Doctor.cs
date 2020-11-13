@@ -7,7 +7,7 @@ namespace WebAppMVC_Assignment1.Models
 {
     public class Doctor
     {
-        private double bodyTemp;
+        //private double bodyTemp;
         
         public double BodyTemp { get; set; }
 

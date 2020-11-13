@@ -16,9 +16,9 @@ namespace WebAppMVC_Assignment1.Controllers
         }
 
         [HttpPost]
-        public IActionResult FeverCheck(string BodyTemp)
+        public IActionResult FeverCheck(double BodyTemp)
         {
-            String recommendation=Doctor.giveRecomendation(Convert.ToDouble(BodyTemp));
+            String recommendation=Doctor.giveRecomendation(BodyTemp);
 
             ViewBag.Recommendation = recommendation;
 
