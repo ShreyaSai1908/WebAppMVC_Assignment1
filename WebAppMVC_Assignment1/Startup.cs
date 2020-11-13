@@ -47,31 +47,34 @@ namespace WebAppMVC_Assignment1
                       defaults: new { controller = "App", action = "About"});*/
 
                 /* endpoints.MapControllerRoute(
-                     name: "fever checkup",
-                     pattern: "App/Fevercheckup/{id?}");*/
+                     name: "fever check",
+                     pattern: "App/FeverCheck/{id?}");*/
 
                 // this is the custom route - Assignment 2
                 endpoints.MapControllerRoute(
                      name: "FeverCheck",
                      pattern: "FeverCheck",
                      defaults: new { controller = "Temp", action = "FeverCheck" });
-
+                
                 endpoints.MapControllerRoute(
                     name: "about",
-                    pattern: "App/About/{id?}");
+                    pattern: "App/About/{id?}",
+                    defaults: new { controller = "App", action = "About" });
 
                 endpoints.MapControllerRoute(
                     name: "contact",
-                    pattern: "App/Contact/{id?}");
+                    pattern: "App/Contact/{id?}",
+                    defaults: new { controller = "App", action = "Contact" });
 
                 endpoints.MapControllerRoute(
                     name: "projects",
-                    pattern: "App/Projects/{id?}");
+                    pattern: "App/Projects/{id?}",
+                    defaults: new { controller = "App", action = "Projects" });
                 
-
+                /*
                 endpoints.MapControllerRoute(
                     name: "deafault",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=App}/{action=Index}/{id?}");*/
                 
 
             });

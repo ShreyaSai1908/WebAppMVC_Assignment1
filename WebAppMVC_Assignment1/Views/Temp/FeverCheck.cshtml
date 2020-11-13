@@ -1,7 +1,26 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Doctor
 @{
+    ViewBag.Title = "FeverCheck";
 }
 
-<h3>Fever Check</h3>
+<div>
+    <h3>Get your Body Temperature checked here!</h3>
+</div>
+
+<div>
+    <form asp-action="FeverCheck" method="post">
+        <label asp-for="BodyTemp"></label>
+        <input asp-for="BodyTemp" />
+
+        <input type="submit" value="Check Fever" />
+    </form>
+</div>
+
+<div>
+    @if (ViewBag.Recommendation != null)
+    {
+        <p>@ViewBag.Recommendation</p>
+    }
+</div>
+
+
