@@ -16,6 +16,7 @@ namespace WebAppMVC_Assignment1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            /*these statements are needed to be added for using Sessions*/
             services.AddDistributedMemoryCache();
 
             services.AddSession(options =>
@@ -24,6 +25,7 @@ namespace WebAppMVC_Assignment1
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            /*these statements are needed to be added for using Sessions*/
 
             services.AddMvc(); //this is mandatory to add here for MVC projects 
             services.AddControllersWithViews();
@@ -41,7 +43,7 @@ namespace WebAppMVC_Assignment1
             app.UseDefaultFiles();   //this used so that webserver can recognize index.html file by its default name
             app.UseStaticFiles();   //this is used so that webserver can recognize static files like html, img files, css file javascript files
             app.UseRouting();      //this is used to enable routing of user requests in the web application
-            app.UseSession();
+            app.UseSession();      // this is mandatory for using Sessions in your Web App
 
             app.UseEndpoints(endpoints =>
             {

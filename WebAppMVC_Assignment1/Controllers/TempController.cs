@@ -21,7 +21,7 @@ namespace WebAppMVC_Assignment1.Controllers
         public IActionResult FeverCheck(double BodyTemp)
         {
             HttpContext.Session.SetString("View", "Temp/FeverCheck");
-            String recommendation=Doctor.giveRecomendation(BodyTemp);
+            string recommendation=Doctor.giveRecomendation(BodyTemp);
 
             ViewBag.Recommendation = recommendation;
 
